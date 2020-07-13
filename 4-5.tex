@@ -1,0 +1,232 @@
+\documentclass[a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+% Definitions & Theorems
+
+\newtcbtheorem
+  []% init options
+  {definition}% name
+  {Definition}% title
+  {%
+    colback=green!5,
+    colframe=green!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix
+
+\newtcbtheorem
+  []% init options
+  {theorem}% name
+  {Theorem}% title
+  {%
+    colback=red!5,
+    colframe=red!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {thrm}% prefix
+
+\newtcbtheorem
+  []% init options
+  {example}% name
+  {Example}% title
+  {%
+    colback=blue!5,
+    colframe=blue!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {expl}% prefix
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+\DeclareMathSymbol{\lsim}{\mathord}{symbols}{"18}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\begin{document}
+
+\chapter{Elementary Number Theory and Methods of Proof}
+
+\section{Direct Proof and Counterexample I: Introduction}
+
+\begin{definition}{Even and Odd}{label}
+    An integer $n$ in \textbf{even} if, and only if, $n$ equals twice some integer. An integer $n$ is \textbf{odd} if, and only if,
+    $n$ equals twice some integer plus $1$.
+\end{definition}
+
+\begin{definition}{Prime and Composite}{label}
+    An integer $n$ is \textbf{prime} if, and only if, $n > 1$ and for all positive integers $r$ and $s$, if $n=rs$ then either
+    $r$ or $s$ equals $n$. An integer $n$ is \textbf{composite} if, and only if, $n > 1$ and $n = rs$ for some integers
+    $r$ and $s$ with $1 < r < n$ and $1 < s < n$.
+\end{definition}
+
+\subsection{Proving Existential Statements}
+
+There are two ways to prove an existential statement: find one condition that satisfies the predicate,
+or give a set of directions for finding that condition. These methods are called
+\textbf{constructive proofs of existence}. A \textbf{nonconstructive proof of existence} shows that
+the condition satisfying the predicate is guaranteed from some axiom/theorem, or showing that the lack
+of such a condition would lead to a contradiction.
+
+\subsection{Disproving Universal Statements}
+
+\begin{definition}{Disproof by Counterexample}{label}
+    To disprove a universal statement of the form $\forall x \in D, P(x) \to Q(x)$, simply find an
+    $x$ for which $P(x)$ is true and $Q(x)$ is false.
+\end{definition}
+
+\subsection{Proving Universal Statements}
+
+The \textbf{Method of Exhaustion}, although impractical, can work for small domains. For more general
+cases, we use
+
+\begin{definition}{Method of Generalizing from the Generic Particular}{label}
+    To show that every element of a set satisfies a certain property, show that a particular but
+    arbitrary chosen $x$ satisfies the property. When using this method on a universal conditional,
+    this is known as the \textbf{method of direct proof}.
+\end{definition}
+
+\begin{definition}{Existential Instantiation}{label}
+    If the existence of a certain kind of object is assumed or has been deduced then it can be
+    given a name, as long as that name is not currently being used to denote something else.
+\end{definition}
+
+\subsection{Proof Guidelines}
+
+\begin{enumerate}
+    \item Copy the statement of the theorem to be proved on your paper.
+    \item Clearly mark the beginning of your proof with the word \textbf{Proof}.
+    \item Make your proof self-contained.
+    \item Write your proof in complete, grammatically correct sentences.
+    \item Keep your reader informed about the status of each statement in your proof.
+    \item Give a reason for each assertion in your proof.
+    \item Include the "little words and phrases" that make the logic of your arguments clear.
+    \item Display equations and inequalities.
+    \item Note: be careful with using the word if. Use because instead if the premise is not in doubt.
+\end{enumerate}
+
+\subsection{Disproving Existential Statements}
+
+In order to prove that an existential statement is false, you simply have to prove that its negation
+is true.
+
+\section{Direct Proof and Counterexample II: Rational Numbers}
+
+\begin{definition}{Rational Number}{label}
+    A real number is \textbf{rational} if, and only if, it can be expressed as a quotient of
+    two integers with a nonzero denominator. A real number that is not rational is \textbf{irrational}.
+\end{definition}
+
+\begin{theorem}{Rational Number Properties}{label}
+    \begin{itemize}
+        \item Every integer is a rational number.
+        \item The sum of any two rational numbers is rational.
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}{Corollary}{label}
+    A statement whose truth can be immediately deduced from a theorem that has already been proven.
+\end{definition}
+
+\section{Direct Proof and Counterexample III: Divisibility}
+
+\begin{definition}{Divisibility}{label}
+    If $n$ and $d$ are integers and $d \neq 0$ then $n$ is \textbf{divisible by} $d$ if, and only
+    if, $n$ equals $d$ times some integer. The notation $d  \mid n$ is read "$d$ divides $n$".
+    Symbolically, \[
+    d  \mid n \leftrightarrow \exists k \in \mathbb{Z}  \mid n = dk
+    .\] 
+    It then follows that \[
+    d \nmid n \leftrightarrow \forall k \in Z | n \neq dk
+    .\] 
+\end{definition}
+
+\subsection{The Unique Factorization of Integers Theorem}
+
+Because of its importance, this theorem is also called the \emph{fundamental theorem of arithmetic}.
+It states that any integer greater than 1 either is prime or can be written as a product of
+prime numbers in a way that is unique. Formally,
+
+\begin{theorem}{Unique Factorization of Integers}{label}
+    Given any integer $n > 1$ there exists a positive integer $k$, distinct prime numbers
+    $p_1, p_2, \ldots p_k$, and positive integers $e_1,e_2, \ldots e_k$ such that \[
+        n = p_1^{e_1} p_2^{e_2} \ldots p_k^{e_k}
+    .\] 
+    When the values of $p$ are ordered in non decreasing order, the above is known as the
+    \textbf{standard factored form} of $n$.
+\end{theorem}
+
+\section{Direct Proof and Counterexample IV: Division into Cases and the Quotient-Remainder Theorem}
+
+\begin{theorem}{The Quotient-Remainder Theorem}{label}
+    Given any integer $n$ and positive integer $d$, there exist unique integers $q$ and $r$ such that
+    \[
+    n = dq + r, 0 \le r < d
+    .\] 
+    Note that if $n$ is negative, the remainder is still positive.
+\end{theorem}
+
+\subsection{div and mod}
+
+From the quotient remainder theorem, div is the value $q$, and mod is the value $r$. Note that \[
+    n \: mod \: d = n - d \cdot (n \: div \: d)
+.\] 
+
+\subsection{Method of Proof by Division into Cases}
+
+To prove a statement of the form "If $A_1$ or $A_2$ or $A_3$ or $\ldots$ or $A_n$, then $C$ prove that
+$A_i$ for all $1 \le i \le n$ implies $C$. This is useful when a statement can be easily split
+into multiple statements that fully encompass the original statement.
+
+\begin{example}{}{label}
+    Prove that the square of any odd integer has the form $8m + 1$ for some integer $m$.
+\end{example}
+
+\emph{Proof (Brief).} Suppose $n$ is an odd integer. By the quotient remainder theorem and using the fact
+that the integer is odd, we can split the possible forms of $n$ into two cases: $4q+1$ or $4q+3$ for
+some integer $q$. It can be proven through substitution that these two cases simplify to the form
+$n^2=8m+1$.
+
+\subsection{Absolute Value and the Triangle Inequality}
+
+\begin{definition}{Absolute Value}{label}
+    For any real number $x$, the \textbf{absolute value of x} is defined as follows: 
+    \begin{equation}
+        |x| = 
+        \begin{cases}
+            x & \text{if} \: x \ge 0 \\
+            -x & \text{if} \: x < 0
+        \end{cases}
+    \end{equation}
+\end{definition}
+
+\begin{theorem}{Triangle Inequality}{label}
+    For all real numbers $x$ and  $y$, $|x + y|  \le  |x| + |y|$.
+\end{theorem}
+
+\section{Indirect Argument: Contradiction and Contraposition}
+
+Proof by contradiction is extremely intuitive and exactly what it sounds like. Assume that the negation
+is true, and show that this assumption leads to a contradiction. Argument by contrapositive is equally
+intuitive given the fact that a statement is logically equivalent to its contrapositive. Note that
+proof by contraposition can only be used on universal conditionals.
+
+\end{document}
