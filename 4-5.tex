@@ -229,4 +229,148 @@ is true, and show that this assumption leads to a contradiction. Argument by con
 intuitive given the fact that a statement is logically equivalent to its contrapositive. Note that
 proof by contraposition can only be used on universal conditionals.
 
+\chapter{Sequences, Mathematical Induction, and Recursion}
+
+The proof chapter is finally over! I did not like that chapter D:
+
+\section{Sequences}
+
+\begin{definition}{Sequence}{label}
+    A \textbf{sequence} is a function whose domain is either all the integers between two given
+    integers or all the integers greater than or equal to a given integer.
+\end{definition}
+
+The first term of a sequence is known as the \textbf{initial term}, and the last term is known as
+the \textbf{final term}. An \textbf{explicit formula} or \textbf{general formula} is a rule
+that shows how the values of $a_k$ depend on $k$.
+
+\subsection{Summation Notation}
+
+\begin{definition}{Summation Notation}{label}
+    For integers $m$ and $n$ where $m \le n$, \[
+        \sum_{k=m}^{n} a_k = a_m + a_{m+1} + \ldots + a_n
+    .\] 
+    We call $k$ the \textbf{index} of the summation, $m$ the \textbf{lower limit} of the summation,
+    and $n$ the \textbf{upper limit} of the summation.
+    
+    A recursive definition of summation notation: \[
+        \sum_{k=m}^{m} a_k = a_m \; \text{and} \sum_{k=m}^{n} a_k = \sum_{k=m}^{n-1} a_k + a_n
+    .\] 
+\end{definition}
+
+\subsection{Product Notation}
+
+\begin{definition}{Product Notation}{label}
+    For integers $m$ and $n$ where $m \le n$, \[
+        \prod_{k=m}^{n} a_k = a_m \cdot a_{m+1} \cdot \ldots \cdot a_n
+    .\] 
+    
+    The recursive definition of product notation is in essence the same idea as the one in summation
+    notation.
+\end{definition}
+
+\subsection{Properties of Summations and Products}
+
+\begin{theorem}{Properties}{label}
+    \begin{enumerate}
+        \item $\sum_{k=m}^{n} a_k + \sum_{k=m}^{n} b_k = \sum_{k=m}^{n} (a_k+b_k)$
+        \item $c \cdot \sum_{k=m}^{n} a_k = \sum_{k=m}^{n} c \cdot a_k$
+        \item $(\prod_{k=m}^{n} a_k) * (\prod_{k=m}^{n} b_k) = (\prod_{k=m}^{n} (a_k \cdot b_k))$
+    \end{enumerate}
+\end{theorem}
+
+Substituting a new variable for $k$ is simple. Change the limits by setting $k$ equal to each of the
+limits and noting the new value, then change the expression itself by substituting $k$.
+
+\section{Mathematical Induction}
+
+The general structure of mathematical induction mirrors a line of thinking somewhat like a domino effect:
+If we can show that some property $P(n)$ is true for some integer $a$, and for all integers $k \ge a$,
+if $P(k)$ is true then $P(k+1)$ is true, then the statement "for all integers $n \ge a, P(n)$ is true.
+This is known as the \textbf{Principle of Mathematical Induction}. Showing that $P(n)$ is true for some
+integer $a$ is known as the \textbf{basis step}, and proving that the truth of $P(k+1)$ follows from the 
+truth of $P(k)$ is known as the \textbf{inductive step}.
+
+\begin{example}{Sum of the First $n$ Integers}{label}
+    For all integers $n \ge 1$, \[
+        1+2+\ldots+n=\frac{n*(n+1)}{2}
+    .\] 
+\end{example}
+
+\emph{Proof (Brief).} Let the property $P(n)$ be the given equation. It can be shown that $P(1)$ is true.
+We assume that $P(k)$ is true ($P(k)$ is known as the \textbf{inductive hypothesis}) and use the fact
+that $P(k)+k=P(k+1)$. Using algebraic manipulation, we find that $P(k+1)$ is true.
+
+In general, use the inductive hypothesis to prove the inductive step.
+
+\section{Strong Mathematical Induction}
+
+\begin{definition}{Principle of Strong Mathematical Induction}{label}
+    Let $P(n)$ be a property that is defined for integers $n$, and let $a$ and $b$ be fixed integers
+    with $a \le b$. Suppose the following two statements are true:
+    \begin{enumerate}
+        \item $P(a), P(a+1), \ldots, P(b)$ are all true. (\textbf{basis step})
+        \item For any integer $k \ge b$, if $P(i)$ is true for all integers $i$ from $a$ through $k$,
+            then $P(k+1)$ is true. (\textbf{inductive step})
+    \end{enumerate}
+    Then the statement \[
+        \text{for all integers } n \ge a, P(n)
+    .\] 
+    is true.
+\end{definition}
+
+\begin{example}{Number of Multiplications Needed to Multiply $n$ Numbers}{label}
+    Prove that for any integer $n \ge 1$, if $x_1, x_2, \ldots x_n$ are $n$ numbers, then no matter
+    how the parentheses are inserted into their product, the number of multiplications used
+    to compute the product is $n - 1$.
+\end{example}
+
+\emph{Proof (Brief).} $P(1)$ is evidently true, as it takes $0$ multiplications to multiply one number.
+Using the inductive hypothesis that $P(i)$ is true for all integers $i$ from $1$ to $k$, we now
+attempt to prove that $P(k+1)$ is also true. We do this by splitting the $k + 1$ integers into two
+sides with $l$ ($1 \le l \le k$) factors on the left and $r$ $(1 \le r \le k)$ factors on the right.
+
+By inductive hypothesis, we note that we end up with $(l-1)+(r-1)+1=l+r-1$ multiplications, which, when
+considering that $l + r = k + 1$, proves the statement.
+
+\begin{definition}{Well-Ordering Principle for the Integers}{label}
+    Let $S$ be a set of integers containing one or more integers all of which are greater than some fixed integer. Then $S$ has a least element.
+\end{definition}
+
+A consequence of the well-ordering principle is the fact that any strictly decreasing sequence of nonnegative integers is finite. (This is because
+from the well-ordering principle, there must be some least element $r_k$, which is the final element, because if there were some term $r_{k+1}$, then
+$r_{k+1}<r_k$, which contradicts the well-ordering principle.
+
+\section{Recursion}
+
+Solving a problem recursively means to find a way to break it down into smaller subproblems each having the same form as the original problem.
+
+\begin{example}{Tower of Hanoi}{label}
+    What is the least number of steps to move 64 golden disks from pole A to pole C (given the information that
+    there are three poles, all the disks are different sizes, and at any point, discs on every pole must be in
+    increasing order of size)?
+\end{example}
+
+The key observation here is to note that if we know the solution for $k-1$ discs, we can use this information to
+get the solution for $k$ discs:
+
+\begin{enumerate}
+    \item Move $k-1$ discs to pole B.
+    \item Move the bottom disc of pole A to pole C.
+    \item Move all the discs from pole B to pole C.
+\end{enumerate}
+
+It then follows that we get the recurrence $m_k=2m_{k-1}+1$ where $m_k$ is the number of moves to move $k$ discs from
+one pole to another.
+
+An explicit formula for this recurrence can be found through iteration and using the formula for the sum of a geometric
+sequence. From this, we get the formula $m_n = 2^n-1$.
+
+\subsection{Checking the Correctness of Explicit Formulas}
+
+We can use mathematical induction to check the correctness of explicit formulas. For example, we can verify the formula for
+Tower of Hanoi by showing that it is true for 1 ring, and then showing that it is true for all $k+1$ assuming that $k$ is true.
+Check your induction proof carefully to make sure that no mistakes were made, and that the recursive form as well as the
+explicit form were both used.
+
 \end{document}
