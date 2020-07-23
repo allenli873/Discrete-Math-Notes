@@ -823,6 +823,24 @@ $\emptyset$, suppose $X$ has an element and derive a contradiction.
 Additionally, casework is helpful when dealing with unions. It may be helpful to split a union into
 2 cases.
 
+\section{Proving/Disproving Set Theorems}
+
+When proving/disproving set theorems, it is often useful to picture the sets as a Venn diagram, and
+formalize the proof by numbering the regions of the Venn diagram. This way, we can easily arrive
+at a counterexample, or proof that there is not one.
+
+\begin{theorem}{Number of Elements in a Powerset}{label}
+    For all integers $n \ge 0$, if a set $X$ has $n$ elements, then the powerset of $X$ has $2^n$ elements.
+\end{theorem}
+
+\emph{Proof (Brief).} We can prove this using mathematical induction. To prove the base case, we note that
+the powerset of an empty set is just the empty set. To prove that powersets of sets with $k+1$ elements have
+$2^{k+1}$ elements, we use the inductive hypothesis and note that adding an extra element $z$ will mean that
+there are half of elements that do not contain $z$ and half that do, which means that the number of elements
+doubles.
+
+Algebraic proofs of Set Identities can be done using the laws in the image provided in the previous section.
+
 \chapter{Functions}
 
 In this chapter we go more in depth into properties of functions and their composition.
