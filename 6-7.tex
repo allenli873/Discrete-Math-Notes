@@ -236,7 +236,32 @@ The composition of functions (defined as $(g \circ f)(x) = g(f(x)) \forall x \in
 functions $f: X \to Y$ and $g: Y \to Z$ is $(g \circ f): X \to Z$.
 Two compositions are equivalent if they have the same output for every input.
 
+\subsection{Properties of Compositions}
+
 \begin{theorem}{Composition of a Function with Its Inverse}{label}
     $f^{-1} \circ f = I_X$ and $f \circ f^{-1} = I_Y$. This can be proved directly using the
+    definition of inverse.
 \end{theorem}
+
+\begin{theorem}{One-to-one/Onto Compositions}{label}
+    If $f: X \to Y$ and $g: Y \to Z$ are both one-to-one, then $g \circ f$ is one-to-one.
+    The same line of reasoning applies for onto functions.
+\end{theorem}
+
+\section{Cardinality and Sizes of Infinity}
+
+\begin{definition}{Cardinality}{label}
+    Let $A$ and $B$ be any sets. \textbf{$A$ has the same cardinality as $B$} if, and only if, there is
+    a one-to-one correspondence from $A$ to $B$. Sets in terms of cardinality follow reflexive,
+    symmetric, and transitive properties.
+\end{definition}
+
+Note that if a set has the same cardinality as a set that is countably infinite, then the set is
+also countably infinite. Surprisingly, the set of all rational numbers is countably infinite.
+
+\subsection{Larger Infinities}
+
+The set of all real numbers is uncountable. This can be proved using the Cantor diagonalization process.
+Note that any subset of a countable set is countable, and any subset with an uncountable set is uncountable.
+
 \end{document}
