@@ -159,4 +159,84 @@ $\emptyset$, suppose $X$ has an element and derive a contradiction.
 Additionally, casework is helpful when dealing with unions. It may be helpful to split a union into
 2 cases.
 
+\chapter{Functions}
+
+In this chapter we go more in depth into properties of functions and their composition.
+
+\section{Functions Defined on General Sets}
+
+\begin{definition}{Function}{label}
+    A \textbf{function} from a set $X$ to a set $Y$, denoted $f: X \to Y$, is a relation from
+    $X$, the \textbf{domain}, to $Y$, the \textbf{co-domain}, that satisfies two properties:
+    \begin{enumerate}
+        \item Every element in $X$ is related to some element in $Y$
+        \item No element in $X$ is related to more than one element in $Y$.
+    \end{enumerate}
+    The set of all values of $f$ is called the \emph{range of f} or the \emph{image of X under f}.
+    If there exists some $x$ such that $f(x)=y$, then x is called a \textbf{preimage 
+    (or inverse image) of $y$}.
+
+    Two functions $F: X \to Y$ and $G: X \to Y$ are considered equal if, for all $x \in X, F(x) = G(x)$
+\end{definition}
+
+\begin{definition}{Identity Function}{label}
+    The identity function $I_X$ is a function from $X \to X$ by which $I_X(x) = x \forall x \in X$.
+\end{definition}
+
+\begin{definition}{Logarithmic Function}{label}
+    The log function $\log_b{x}=y$ (from $\mathbb{R}^{+}$ to $\mathbb{R}$) maps a number to the $y$ in the solution of
+    the equation $b^y=x$.
+\end{definition}
+
+\subsection{Well Defined Functions}
+
+We say that a function is \textbf{not well defined} if it fails to satisfy at least one of the
+requirements for being a function. A function being well defined really means that it qualifies
+to be called a function.
+
+\section{One-to-One and Onto, Inverse Functions}
+
+\subsection{One-to-one}
+
+A function is \textbf{one-to-one} (or \textbf{injective}) if, and only if, every input has a unique 
+output. Symbolically, $\forall x_1, x_2 \in X, f(x_1)=f(x_2) \to x_1 = x_2$.
+
+To prove that $f$ is one-to-one, you \textbf{suppose} $x_1$ and $x_2$ are elements of $X$ such that
+$f(x_1)=f(x_2)$, and \textbf{show} that $x_1=x_2$.
+
+\subsection{Onto}
+
+A function is \textbf{onto} (or \textbf{surjective}) if, and only if, the co-domain of the function
+is equal to its image. Symbolically, $\forall y \in Y, \exists x \in X  \mid f(x) = y$.
+
+To prove that $f$ is onto, you \textbf{suppose} $y$ is in $Y$, and \textbf{show} that
+there exists an element in $x$ such that $y = f(x)$.
+
+\subsection{One-to-one correspondences and Inverse Functions}
+
+\begin{definition}{Bijection}{label}
+    A \textbf{one-to-one correspondence} (or \textbf{bijection}) from a set $X$ to a set $Y$ is
+    a function that is both one-to-one and onto.
+\end{definition}
+
+\begin{theorem}{Inverse Functions}{label}
+    Suppose $F: X \to Y$ is a one-to-one correspondence. Then there is a function $F^{-1}: Y \to X$
+    where $F^{-1}(y)=x$. Note that $F^{-1}$ is also a one-to-one correspondence.
+
+    Additionally, note that \[
+        f^{-1}(b) = a \Leftrightarrow f(a) = b
+    .\] 
+\end{theorem}
+
+Finding an inverse function is done while proving that some function $F$ is onto.
+
+\section{Composition of Functions}
+
+The composition of functions (defined as $(g \circ f)(x) = g(f(x)) \forall x \in X$) for two
+functions $f: X \to Y$ and $g: Y \to Z$ is $(g \circ f): X \to Z$.
+Two compositions are equivalent if they have the same output for every input.
+
+\begin{theorem}{Composition of a Function with Its Inverse}{label}
+    $f^{-1} \circ f = I_X$ and $f \circ f^{-1} = I_Y$. This can be proved directly using the
+\end{theorem}
 \end{document}
